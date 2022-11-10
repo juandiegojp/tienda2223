@@ -5,19 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        table,
-        td,
-        th {
-            border: 1px solid;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-        }
-    </style>
+    <link href="./css/output.css" rel="stylesheet">
     <title>Tienda</title>
 </head>
 
@@ -38,7 +26,7 @@
      * Hacer la función borrar.
      * 
      */
-    require 'auxiliar.php';
+    require '../src/auxiliar.php';
 
     $hasta_codigo = obtener_get('hasta_codigo');
     $descripcion = obtener_get('descripcion');
@@ -85,28 +73,31 @@
             </fieldset>
         </form>
     </div>
-    <div id="tabla">
-        <table>
-            <thead>
-                <th>Código</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th colspan="2">Acciones</th>
+    <div class="overflow-x-auto relative">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr>
+                    <th scope="col" class="py-3 px-6">Código</th>
+                    <th scope="col" class="py-3 px-6">Descripcion</th>
+                    <th scope="col" class="py-3 px-6">Precio</th>
+                    <th scope="col" class="py-3 px-6 col-span-2">Acciones</th>
+                </tr>
             </thead>
             <tbody>
                 <?php foreach ($sent as $fila) : ?>
-                    <tr>
-                        <td><?= hh($fila['codigo']) ?></td>
-                        <td><?= hh($fila['descripcion']) ?></td>
-                        <td><?= hh($fila['precio']) ?></td>
-                        <td><a href="confirmar_borrado.php?id=<?= hh($fila['id']) ?>">Borrar</a></td>
-                        <td><a href="modificar.php?id=<?= hh($fila['id']) ?>">Modificar</a></td>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="py-4 px-6"><?= hh($fila['codigo']) ?></td>
+                        <td class="py-4 px-6"><?= hh($fila['descripcion']) ?></td>
+                        <td class="py-4 px-6"><?= hh($fila['precio']) ?></td>
+                        <td class="py-4 px-6"><a href="confirmar_borrado.php?id=<?= hh($fila['id']) ?>">Borrar</a></td>
+                        <td class="py-4 px-6"><a href="modificar.php?id=<?= hh($fila['id']) ?>">Modificar</a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
         <p>Número total de filas: <?= hh($total) ?></p>
     </div>
+    <script src="/js/flowbite.js"></script>
 </body>
 
 </html>
