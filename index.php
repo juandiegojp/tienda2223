@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,8 @@
      * Al ser un varchar en el .sql, no tiene sentido compararlos. Entonces se
      * usado la misma técnica que en la descripción para hacer la búsqueda.
      * Es decir, una búsqueda que contenga el código que se le introcude.
+     * 
+     * Hacer la función borrar.
      * 
      */
     require 'auxiliar.php';
