@@ -6,15 +6,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/css/output.css" rel="stylesheet">
+  <link href="../css/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
   <script>
     function cambiar(el, id) {
-      el.preventDefault();
-      const oculto = document.getElementById('oculto');
-      oculto.setAttribute('value', id);
-    }
-
-    function insertar(el, id) {
       el.preventDefault();
       const oculto = document.getElementById('oculto');
       oculto.setAttribute('value', id);
@@ -30,7 +25,7 @@
   require '../../src/auxiliar.php';
 
   $pdo = conectar();
-  $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
+  $sent = $pdo->query("SELECT * FROM articulos ORDER BY CHAR_LENGTH(codigo) ASC, codigo ASC");
   ?>
   <div class="container mx-auto">
     <?php if (isset($_SESSION['error'])) : ?>
@@ -87,8 +82,8 @@
               <td class="py-4 px-6"><?= hh($fila['precio']) ?></td>
               <td class="px-6 text-center">
                 <?php $fila_id = hh($fila['id']) ?>
-                <a href="/admin/editar.php?id=<?= $fila_id ?>"><button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Editar</button></a>
-                <form action="/admin/borrar.php" method="POST" class="inline">
+                <a href="editar.php?id=<?= $fila_id ?>"><button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Editar</button></a>
+                <form action="borrar.php" method="POST" class="inline">
                   <input type="hidden" name="id" value="<?= $fila_id ?>">
                   <button type="submit" onclick="cambiar(event, <?= $fila_id ?>)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-modal-toggle="popup-modal">Borrar</button>
                 </form>
@@ -113,7 +108,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
           <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Seguro que desea borrar este artículo?</h3>
-          <form action="/admin/borrar.php" method="POST">
+          <form action="borrar.php" method="POST">
             <input id="oculto" type="hidden" name="id">
             <button data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
               Sí, seguro
@@ -163,7 +158,7 @@
       </div>
     </div>
   </div>
-  <script src="/js/flowbite.js"></script>
+  <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 
 </html>

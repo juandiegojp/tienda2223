@@ -8,7 +8,12 @@ $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 
 $pdo = conectar();
-$pdo->prepare("INSERT INTO articulos VALUES (:codigo, :descripcion, :precio)");
+$sent = $pdo->prepare("INSERT INTO articulos (codigo, descripcion, precio) VALUES (:codigo, :descripcion, :precio)");
+$sent->execute([
+    ':codigo' => $codigo,
+    ':descripcion' => $descripcion,
+    ':precio' => $precio
+]);
 
 
 volver_admin();

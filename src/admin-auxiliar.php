@@ -2,5 +2,5 @@
 
 function volver_admin()
 {
-    header("Location: /admin/");
+    header("Location: ./");
 }
