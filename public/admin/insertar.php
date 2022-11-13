@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require "../../src/auxiliar.php";
 require "../../src/admin-auxiliar.php";
@@ -14,6 +15,8 @@ $sent->execute([
     ':descripcion' => $descripcion,
     ':precio' => $precio
 ]);
+
+$_SESSION['exito'] = 'El artículo se ha añadido correctamente.';
 
 
 volver_admin();
