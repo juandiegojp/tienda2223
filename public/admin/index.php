@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../css/output.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
   <script>
     function cambiar(el, id) {
       el.preventDefault();
@@ -88,9 +87,9 @@
               <td class="py-4 px-6"><?= hh($fila['precio']) ?></td>
               <td class="px-6 text-center">
                 <?php $fila_id = hh($fila['id']);
-                      $fila_codigo = hh($fila['codigo']);
-                      $fila_descripcion = hh($fila['descripcion']);
-                      $fila_precio = hh($fila['precio'])
+                $fila_codigo = hh($fila['codigo']);
+                $fila_descripcion = hh($fila['descripcion']);
+                $fila_precio = hh($fila['precio'])
                 ?>
                 <form action="modificar.php" method="POST" class="inline">
                   <input type="hidden" name="id" value="<?= $fila_id ?>">
@@ -124,8 +123,8 @@
           <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Seguro que desea borrar este artículo?</h3>
-          <form action="borrar.php" method="POST">
+          <form action="borrar.php" method="POST" aria-describedby="confirmarBorradoH3">
+            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400" id="confirmarBorradoH3">¿Seguro que desea borrar este artículo?</h3>
             <input id="oculto" type="hidden" name="id">
             <button data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
               Sí, seguro
@@ -218,6 +217,7 @@
     </div>
   </div>
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
 </body>
 
 </html>
