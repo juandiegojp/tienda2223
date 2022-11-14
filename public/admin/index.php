@@ -91,12 +91,12 @@
                 $fila_descripcion = hh($fila['descripcion']);
                 $fila_precio = hh($fila['precio'])
                 ?>
-                <form action="modificar.php" method="POST" class="inline">
+                <form action="/admin/modificar.php" method="POST" class="inline">
                   <input type="hidden" name="id" value="<?= $fila_id ?>">
                   <button type="submit" onclick="cambiarModificar(event, <?= $fila_id ?>)" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" data-modal-toggle="modificar">Editar</button>
                 </form>
                 <!-- <a href="editar.php?id=<?= $fila_id ?>"><button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Editar</button></a> -->
-                <form action="borrar.php" method="POST" class="inline">
+                <form action="/admin/borrar.php" method="POST" class="inline">
                   <input type="hidden" name="id" value="<?= $fila_id ?>">
                   <button type="submit" onclick="cambiar(event, <?= $fila_id ?>)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-modal-toggle="popup-modal">Borrar</button>
                 </form>
@@ -123,7 +123,7 @@
           <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <form action="borrar.php" method="POST" aria-describedby="confirmarBorradoH3">
+          <form action="/admin/borrar.php" method="POST" aria-describedby="confirmarBorradoH3">
             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400" id="confirmarBorradoH3">¿Seguro que desea borrar este artículo?</h3>
             <input id="oculto" type="hidden" name="id">
             <button data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
@@ -152,7 +152,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
           <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">ESTÁS MODIFICANDO LAS COSAS DE LA VIDA</h3>
-          <form class="space-y-6" action="modificar.php" method="POST">
+          <form class="space-y-6" action="/admin/modificar.php" method="POST">
             <div>
               <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Código</label>
               <input type="text" name="codigo" id="codigo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="000" required="">
@@ -197,7 +197,7 @@
         </button>
         <div class="py-6 px-6 lg:px-8">
           <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Insertar nuevo artículo</h3>
-          <form class="space-y-6" action="insertar.php" method="POST">
+          <form class="space-y-6" action="/admin/insertar.php" method="POST">
             <div>
               <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Código</label>
               <input type="text" name="codigo" id="codigo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="000" required="">
