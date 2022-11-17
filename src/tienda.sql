@@ -1,18 +1,30 @@
 DROP TABLE IF EXISTS articulos CASCADE;
 
 CREATE TABLE articulos (
-    id bigserial PRIMARY KEY,
-    codigo varchar(255) NOT NULL UNIQUE,
-    descripcion varchar(255) NOT NULL,
-    precio numeric(7, 2) NOT NULL
+    id          bigserial     PRIMARY KEY,
+    codigo      varchar(13)   NOT NULL UNIQUE,
+    descripcion varchar(255)  NOT NULL,
+    precio      numeric(7, 2) NOT NULL
 );
 
--- CARGA INICIAL DE DATOS DE PRUEBA:
+DROP TABLE IF EXISTS usuarios CASCADE;
+
+CREATE TABLE usuarios (
+    id       bigserial    PRIMARY KEY,
+    usuario  varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL
+);
+
+-- Carga inicial de datos de prueba:
+
 INSERT INTO articulos (codigo, descripcion, precio)
-    VALUES 
-        ('100', 'YOGURT PIÑA', 200.50), 
-        ('202', 'TIGRETÓN', 50.10), 
-        ('300', 'DISCO DURO SSD 500 GB', 150.30),
-        ('102', 'LECHE SIN LACTOSA', 0.90),
-        ('201', 'GALLETAS DE CHOCOLATE', 1.20),
-        ('403', 'TRX CROSSFIT', 18.25);
+    VALUES ('18273892389', 'Yogur piña', 200.50),
+           ('83745828273', 'Tigretón', 50.10),
+           ('51736128495', 'Disco duro SSD 500 GB', 150.30),
+           ('83746828273', 'Tigretón', 50.10),
+           ('51786128435', 'Disco duro SSD 500 GB', 150.30),
+           ('83745228673', 'Tigretón', 50.10),
+           ('51786198495', 'Disco duro SSD 500 GB', 150.30);
+
+INSERT INTO usuarios (usuario, password)
+    VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)));
