@@ -51,5 +51,6 @@
         </div>
     </section>
 </body>
+<script src="/js/flowbite/flowbite.js"></script>
 
 </html>
