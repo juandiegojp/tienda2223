@@ -16,3 +16,8 @@ npx tailwindcss -i ./src/input.css -o ./public/css/output.css --watch
 * alter database template1 refresh collation version ; (si muestra un warning, este comando hace que desaparezca.)
 * create extension pgcryto (añade la extension cryto)
 * select crypt('pepe', gen_salt('bf', 10)); 
+
+<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+
+Necesario para casa porque a veces no me funciona igual que en el cole.

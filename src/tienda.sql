@@ -20,11 +20,7 @@ CREATE TABLE usuarios (
 INSERT INTO articulos (codigo, descripcion, precio)
     VALUES ('18273892389', 'Yogur piña', 200.50),
            ('83745828273', 'Tigretón', 50.10),
-           ('51736128495', 'Disco duro SSD 500 GB', 150.30),
-           ('83746828273', 'Tigretón', 50.10),
-           ('51786128435', 'Disco duro SSD 500 GB', 150.30),
-           ('83745228673', 'Tigretón', 50.10),
-           ('51786198495', 'Disco duro SSD 500 GB', 150.30);
+           ('51736128495', 'Disco duro SSD 500 GB', 150.30);
 
 INSERT INTO usuarios (usuario, password)
     VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)));
