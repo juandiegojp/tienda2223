@@ -56,4 +56,28 @@ class Usuario
             ? new static($fila)
             : false;
     }
+
+    // Comprobar usuarios y comprobar que las contraseñas coinciden.
+    public static function comprobar_registro($registro, $password, ?PDO $pdo = null)
+    {
+        $pdo = $pdo ?? conectar();
+
+        $sent = $pdo->prepare('SELECT *
+                                 FROM usuarios
+                                WHERE usuario = :registro');
+        $sent->execute([':registro' => $registro]);
+        $fila = $sent->fetch(PDO::FETCH_ASSOC);
+
+        if ($fila === false) {
+            $sent = $pdo->prepare("INSERT INTO usuarios (usuario, password)
+                                   VALUES (:registro, crypt(:password, gen_salt('bf', 10)))");
+            $sent->execute([':registro' => $registro, ':password' => $password]);
+            $fila = $sent->fetch(PDO::FETCH_ASSOC);
+            return new static($fila);
+        }
+        else {
+            return false;
+        }
+        
+    }
 }
