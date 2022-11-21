@@ -72,12 +72,12 @@ class Usuario
             $sent = $pdo->prepare("INSERT INTO usuarios (usuario, password)
                                    VALUES (:registro, crypt(:password, gen_salt('bf', 10)))");
             $sent->execute([':registro' => $registro, ':password' => $password]);
-            $fila = $sent->fetch(PDO::FETCH_ASSOC);
-            return new static($fila);
+            $sent = $pdo->prepare("SELECT usuario FROM usuarios WHERE usuario = :registro");
+            $sent->execute([':registro' => $registro]);
+            return new static($sent->fetch(PDO::FETCH_ASSOC));
         }
         else {
             return false;
         }
-        
     }
 }
