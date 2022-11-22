@@ -67,17 +67,15 @@ class Usuario
                                 WHERE usuario = :registro');
         $sent->execute([':registro' => $registro]);
         $fila = $sent->fetch(PDO::FETCH_ASSOC);
+        var_dump($fila);
 
         if ($fila === false) {
-            $sent = $pdo->prepare("INSERT INTO usuarios (usuario, password)
+            $insertar = $pdo->prepare("INSERT INTO usuarios (usuario, password)
                                    VALUES (:registro, crypt(:password, gen_salt('bf', 10)))");
-            $sent->execute([':registro' => $registro, ':password' => $password]);
-            $sent = $pdo->prepare("SELECT usuario FROM usuarios WHERE usuario = :registro");
-            $sent->execute([':registro' => $registro]);
-            return new static($sent->fetch(PDO::FETCH_ASSOC));
+            $insertar->execute([':registro' => $registro, ':password' => $password]);
         }
-        else {
-            return false;
-        }
+
+        $campos['usuario'] = $registro;
+        return new Usuario($campos);
     }
 }
