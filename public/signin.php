@@ -26,7 +26,7 @@
             $_SESSION['exito'] = 'Cuenta creada con éxito.';
             // Loguear al usuario
             $_SESSION['login'] = serialize($usuario);
-            return $usuario->es_admin() ? volver_admin() : volver();
+            return volver();
         } else {
             // Mostrar error de validación
             $error = true;

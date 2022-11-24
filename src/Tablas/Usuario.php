@@ -1,12 +1,19 @@
 <?php
 
-class Usuario
+namespace Tablas;
+
+use PDO;
+
+class Usuario extends Modelo
 {
+    protected static string $tabla = 'usuarios';
+
     public $id;
     public $usuario;
 
     public function __construct(array $campos)
     {
+        $this->tabla = 'usuarios';
         $this->id = $campos['id'];
         $this->usuario = $campos['usuario'];
     }
@@ -14,18 +21,6 @@ class Usuario
     public function es_admin(): bool
     {
         return $this->usuario == 'admin';
-    }
-
-    public static function obtener(int $id, ?PDO $pdo = null): ?static
-    {
-        $pdo = $pdo ?? conectar();
-        $sent = $pdo->prepare('SELECT *
-                                 FROM usuarios
-                                WHERE id = :id');
-        $sent->execute([':id' => $id]);
-        $fila = $sent->fetch(PDO::FETCH_ASSOC);
-
-        return $fila ? new static($fila) : null;
     }
 
     public static function esta_logueado(): bool
@@ -67,17 +62,15 @@ class Usuario
                                 WHERE usuario = :registro');
         $sent->execute([':registro' => $registro]);
         $fila = $sent->fetch(PDO::FETCH_ASSOC);
+        var_dump($fila);
 
         if ($fila === false) {
-            $sent = $pdo->prepare("INSERT INTO usuarios (usuario, password)
+            $insertar = $pdo->prepare("INSERT INTO usuarios (usuario, password)
                                    VALUES (:registro, crypt(:password, gen_salt('bf', 10)))");
-            $sent->execute([':registro' => $registro, ':password' => $password]);
-            $sent = $pdo->prepare("SELECT usuario FROM usuarios WHERE usuario = :registro");
-            $sent->execute([':registro' => $registro]);
-            return new static($sent->fetch(PDO::FETCH_ASSOC));
+            $insertar->execute([':registro' => $registro, ':password' => $password]);
         }
-        else {
-            return false;
-        }
+
+        $campos['usuario'] = $registro;
+        return new Usuario($campos);
     }
 }
