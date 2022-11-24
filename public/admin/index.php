@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php
+
+use Tablas\Usuario;
+
+ session_start() ?>
 <!DOCTYPE html>
 <html lang="es">
 
