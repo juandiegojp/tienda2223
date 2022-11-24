@@ -22,7 +22,7 @@
     $error = false;
 
     if (isset($registro, $password)) {
-        if ($usuario = Usuario::comprobar_registro($registro, $password)) {
+        if ($usuario = \Tablas\Usuario::comprobar_registro($registro, $password)) {
             $_SESSION['exito'] = 'Cuenta creada con éxito.';
             // Loguear al usuario
             $_SESSION['login'] = serialize($usuario);
