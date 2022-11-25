@@ -21,3 +21,11 @@ npx tailwindcss -i ./src/input.css -o ./public/css/output.css --watch
 <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
 
 Necesario para casa porque a veces no me funciona igual que en el cole.
+
+
+# VIERNES 25 DE NOVIEMBRE
+
+* Generar pdf. Dentro de las opciones del ususario, donde está el dashboard, crear un apartado que sea facturas o pedidos... y que genere,
+  con un botón, una factura. 
+* CRUD ADMIN. El admin puede insertar, eliminar y modificar los usuarios.
+* 
