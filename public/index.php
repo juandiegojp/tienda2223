@@ -49,7 +49,7 @@
                                 <th scope="col" class="py-3 px-6">Cantidad</th>
                             </thead>
                             <tbody>
-                                <?php foreach ($carrito->getLineas() as $id => $linea): ?>
+                                <?php foreach ($carrito->getLineas() as $id => $linea) : ?>
                                     <?php
                                     $articulo = $linea->getArticulo();
                                     $cantidad = $linea->getCantidad();

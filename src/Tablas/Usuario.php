@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Tablas;
 
 use PDO;
@@ -50,27 +49,5 @@ class Usuario extends Modelo
         return password_verify($password, $fila['password'])
             ? new static($fila)
             : false;
-    }
-
-    // Comprobar usuarios y comprobar que las contraseñas coinciden.
-    public static function comprobar_registro($registro, $password, ?PDO $pdo = null)
-    {
-        $pdo = $pdo ?? conectar();
-
-        $sent = $pdo->prepare('SELECT *
-                                 FROM usuarios
-                                WHERE usuario = :registro');
-        $sent->execute([':registro' => $registro]);
-        $fila = $sent->fetch(PDO::FETCH_ASSOC);
-        var_dump($fila);
-
-        if ($fila === false) {
-            $insertar = $pdo->prepare("INSERT INTO usuarios (usuario, password)
-                                   VALUES (:registro, crypt(:password, gen_salt('bf', 10)))");
-            $insertar->execute([':registro' => $registro, ':password' => $password]);
-        }
-
-        $campos['usuario'] = $registro;
-        return new Usuario($campos);
     }
 }

@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS articulos CASCADE;
 
 CREATE TABLE articulos (
@@ -20,7 +19,7 @@ DROP TABLE IF EXISTS facturas CASCADE;
 
 CREATE TABLE facturas (
     id         bigserial  PRIMARY KEY,
-    created_at timestamp  NOT NULL DEFAULT localtimestamp,
+    created_at timestamp  NOT NULL DEFAULT localtimestamp(0),
     usuario_id bigint NOT NULL REFERENCES usuarios (id)
 );
 
