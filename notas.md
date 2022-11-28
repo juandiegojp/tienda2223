@@ -28,4 +28,13 @@ Necesario para casa porque a veces no me funciona igual que en el cole.
 * Generar pdf. Dentro de las opciones del ususario, donde está el dashboard, crear un apartado que sea facturas o pedidos... y que genere,
   con un botón, una factura. 
 * CRUD ADMIN. El admin puede insertar, eliminar y modificar los usuarios.
+
+
+# LUNES 28 DE NOVIEMBRE
+
+Solución al problema con el código de mi amigo Ricpelo:
+* composer install
+* añadir y actualizar todo lo que tiene en su repositorio
+* npm install
+* composer dump-autoload
 * 
