@@ -22,7 +22,7 @@
     $error = false;
 
     if (isset($registro, $password)) {
-        if ($usuario = \Tablas\Usuario::comprobar_registro($registro, $password)) {
+        if ($usuario = App\Tablas\Usuario::comprobar_registro($registro, $password)) {
             $_SESSION['exito'] = 'Cuenta creada con éxito.';
             // Loguear al usuario
             $_SESSION['login'] = serialize($usuario);
@@ -50,7 +50,7 @@
                     <label for="password" class="block mb-2 text-sm font-medium <?= $clases_label ?>">Contraseña</label>
                     <input type="password" name="password" id="password" class="border text-sm rounded-lg block w-full p-2.5  <?= $clases_input ?>">
                 </div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">registro</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar</button>
             </form>
         </div>
     </div>

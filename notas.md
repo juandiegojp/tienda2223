@@ -37,4 +37,9 @@ Solución al problema con el código de mi amigo Ricpelo:
 * añadir y actualizar todo lo que tiene en su repositorio
 * npm install
 * composer dump-autoload
+
+
+# MARTES 29 DE NOVIEMBRE
+* Registro terminado.
+* Require carbono composer
 * 

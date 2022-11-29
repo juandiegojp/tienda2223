@@ -1,6 +1,6 @@
 <?php
 
-use Tablas\Usuario;
+use App\Tablas\Usuario;
 
  session_start() ?>
 <!DOCTYPE html>
